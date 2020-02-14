@@ -6,6 +6,7 @@ const clientSchema = mongoose.Schema({
     firstName: String,
     lastName: String,
     venmo: String,
+    email: String,
     cashapp: String,
     phoneNumber: String,
     tasks: [Task],
