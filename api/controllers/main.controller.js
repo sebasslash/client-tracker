@@ -10,7 +10,7 @@ module.exports.error = (req, res) => {
 
 module.exports.getClientsPage = async (req, res) => {
     // Make API call to GET all clients
-    let promise = axios.get(URL + '/clients/all');
+    let promise = await axios.get(URL + '/clients/all');
     promise.then(clients => {
         res.status(200).render('client/clients-all', {clients: clients});
     }).catch(err => {
