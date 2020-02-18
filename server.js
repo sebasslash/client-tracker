@@ -10,7 +10,8 @@ const express         = require('express'),
       LocalStrategy   = require('passport-local').Strategy,
       app             = express();
 
-const mainRoutes = require('./api/routes/main.routes');
+const mainRoutes = require('./api/routes/main.routes'),
+      clientRoutes = require('./api/routes/client.routes');
 const port = process.env.PORT ? process.env.PORT : 3000;
 
 
@@ -34,6 +35,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(mainRoutes);
+app.use(clientRoutes);
 
 try {
     app.listen(port, () => {

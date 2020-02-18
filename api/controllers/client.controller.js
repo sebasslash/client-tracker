@@ -14,7 +14,7 @@ module.exports.getAll = async (req, res) => {
 };
 
 module.exports.getById = async (req, res) => {
-    const query = await Client.findById({_id: req.body.id}).exec();
+    const query = await Client.findById({_id: req.params.id}).exec();
     query.then(client => {
         res.status(200).json(client);
     }).catch(err => {
