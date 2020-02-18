@@ -1,3 +1,4 @@
+const axios = require('axios');
 
 module.exports.main = (req, res) => {
     res.status(200).render('home');
@@ -9,7 +10,12 @@ module.exports.error = (req, res) => {
 
 module.exports.getClientsPage = async (req, res) => {
     // Make API call to GET all clients
-    res.status(200).render('client/clients-all');
+    let promise = axios.get(URL + '/clients/all');
+    promise.then(clients => {
+        res.status(200).render('client/clients-all', {clients: clients});
+    }).catch(err => {
+        res.status(401).render('client/clients-error');
+    });
 };
 
 module.exports.getEmployeesPage = async (req, res) => {
